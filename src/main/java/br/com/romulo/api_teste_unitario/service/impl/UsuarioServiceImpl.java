@@ -1,12 +1,15 @@
 package br.com.romulo.api_teste_unitario.service.impl;
 
+import br.com.romulo.api_teste_unitario.common.config.ModelMapperConfig;
 import br.com.romulo.api_teste_unitario.common.exceptions.ObjectNotFoundException;
 import br.com.romulo.api_teste_unitario.repositories.UsuarioRepository;
 import br.com.romulo.api_teste_unitario.service.IUsuarioService;
 import br.com.romulo.api_teste_unitario.entity.Usuario;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,5 +27,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     public Usuario incluir(Usuario usuario) {
         return null;
+    }
+
+    @Override
+    public List<Usuario> findAll() {
+        return usuarioRepository.findAll();
     }
 }
