@@ -5,6 +5,7 @@ import br.com.romulo.api_teste_unitario.service.IUsuarioService;
 import br.com.romulo.api_teste_unitario.entity.Usuario;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +23,11 @@ public class UsuarioController {
     @Autowired
     private ModelMapper mapper;
 
-//    public ResponseEntity<Usuario> incluir(@RequestBody Usuario usuario) {
-//
-//    }
+
+    @PostMapping(value = "/usuario")
+    public ResponseEntity<Usuario> incluirUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        return new ResponseEntity<>(usuarioService.incluir(usuarioDTO), HttpStatus.CREATED);
+    }
 
     @GetMapping(value = "/usuario/{id-usuario}")
     public ResponseEntity<UsuarioDTO> getUsuarioId(@PathVariable("id-usuario") Integer idUsuario){
