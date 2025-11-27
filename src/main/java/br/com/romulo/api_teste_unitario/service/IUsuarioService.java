@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface IUsuarioService {
 
-    Usuario findById(Integer id);
     Usuario incluir(UsuarioDTO usuario);
+    Usuario findById(Integer id);
     List<Usuario> findAll();
+    Usuario update(UsuarioDTO usuario);
 }

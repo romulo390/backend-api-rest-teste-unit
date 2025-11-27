@@ -44,4 +44,10 @@ public class UsuarioController {
         return ResponseEntity.ok().body(listUsuarioDTO);
     }
 
+    @PutMapping(value="/{id-usuario}")
+    public ResponseEntity<UsuarioDTO> atualizarUsuario(@PathVariable("id-usuario") Integer id, @RequestBody UsuarioDTO usuarioDTO){
+        usuarioDTO.setIdUsuario(id);
+        return ResponseEntity.ok().body(mapper.map(usuarioService.update(usuarioDTO), UsuarioDTO.class));
+    }
+
 }

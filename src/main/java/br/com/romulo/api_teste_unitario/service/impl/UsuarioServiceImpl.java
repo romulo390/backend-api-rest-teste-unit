@@ -42,9 +42,15 @@ public class UsuarioServiceImpl implements IUsuarioService {
         return usuarioRepository.findAll();
     }
 
+    @Override
+    public Usuario update(UsuarioDTO usuario) {
+        checkUsuario(usuario);
+        return usuarioRepository.save(mapper.map(usuario,Usuario.class));
+    }
+
     public void checkUsuario(UsuarioDTO usuarioDTO){
         Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioDTO.getEmail());
-        if(usuario.isPresent()){
+        if(usuario.isPresent() && !usuario.get().getIdUsuario().equals(usuarioDTO.getIdUsuario())){
             throw new DataIntegratyViolationExceprion("Usuário já cadastrado para esse email!");
         }
     }
