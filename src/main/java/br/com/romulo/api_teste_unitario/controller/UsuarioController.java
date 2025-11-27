@@ -3,6 +3,7 @@ package br.com.romulo.api_teste_unitario.controller;
 import br.com.romulo.api_teste_unitario.dto.UsuarioDTO;
 import br.com.romulo.api_teste_unitario.service.IUsuarioService;
 import br.com.romulo.api_teste_unitario.entity.Usuario;
+import br.com.romulo.api_teste_unitario.util.Utils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

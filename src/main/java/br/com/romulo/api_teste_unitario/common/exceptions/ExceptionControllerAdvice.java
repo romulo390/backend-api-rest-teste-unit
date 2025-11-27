@@ -19,4 +19,12 @@ public class ExceptionControllerAdvice {
                 new ErroResponse(Instant.now().toEpochMilli(), HttpStatus.NOT_FOUND.value(), ex.getMessage(),request.getRequestURI());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erroResponse);
     }
+
+    @ExceptionHandler(DataIntegratyViolationExceprion.class)
+    public ResponseEntity<ErroResponse> handleException(DataIntegratyViolationExceprion ex, HttpServletRequest request) {
+
+        ErroResponse erroResponse =
+                new ErroResponse(Instant.now().toEpochMilli(), HttpStatus.BAD_REQUEST.value(), ex.getMessage(),request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erroResponse);
+    }
 }
